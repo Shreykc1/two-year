@@ -1,0 +1,226 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'Y2K';
+  src: url('https://fonts.cdnfonts.com/s/66487/Y2K-Bug.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Pixel';
+  src: url('https://fonts.cdnfonts.com/s/14159/VCR_OSD_MONO_1.001.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --primary-color: #ff66c4;
+  --secondary-color: #6666ff;
+  --accent-color: #33ffcc;
+  --background-color: #000033;
+  --text-color: #ffffff;
+}
+
+* {
+  cursor: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Pixel', monospace;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  overflow-x: hidden;
+}
+
+.app-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Y2K-inspired styles */
+.y2k-gradient {
+  background: linear-gradient(45deg, #ff66c4, #6666ff, #33ffcc);
+  background-size: 200% 200%;
+  animation: gradient-shift 10s ease infinite;
+}
+
+.y2k-text {
+  font-family: 'Y2K', sans-serif;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #ff66c4, #6666ff, #33ffcc);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 0 10px rgba(255, 102, 196, 0.5);
+}
+
+.y2k-title {
+  font-family: 'Y2K', sans-serif;
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(255, 102, 196, 0.5);
+}
+
+.y2k-card {
+  background: rgba(10, 10, 40, 0.7);
+  border: 2px solid var(--accent-color);
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgba(51, 255, 204, 0.5);
+  backdrop-filter: blur(5px);
+  padding: 20px;
+  transition: all 0.3s ease;
+}
+
+.y2k-card:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 0 30px rgba(51, 255, 204, 0.8);
+}
+
+.y2k-button {
+  background: linear-gradient(45deg, #ff66c4, #6666ff);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-family: 'Pixel', monospace;
+  font-size: 1rem;
+  padding: 10px 20px;
+  cursor: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 10px rgba(255, 102, 196, 0.5);
+}
+
+.y2k-button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: all 0.5s ease;
+}
+
+.y2k-button:hover:before {
+  left: 100%;
+}
+
+.y2k-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px rgba(255, 102, 196, 0.8);
+}
+
+.star-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.scan-lines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* Animations */
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+  5% {
+    opacity: 0.8;
+  }
+  10% {
+    opacity: 1;
+  }
+  15% {
+    opacity: 0.9;
+  }
+  20% {
+    opacity: 1;
+  }
+  55% {
+    opacity: 0.9;
+  }
+  60% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 0.9;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* Hover Effects */
+.hover-glitch:hover {
+  animation: glitch 0.5s linear;
+}
+
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .y2k-title {
+    font-size: 2rem;
+  }
+}
